@@ -55,21 +55,36 @@ async def on_message(message):
     if message.content.startswith("nt!customembed"):
         await message.delete()
 
-        await message.channel.send("Construction d'un embed dans la console...")
+        await message.channel.send("Construction d'un embed depuis la console...")
 
-        print("Veuillez mettre les informations de l'embed.")
-        auteur_embed = input("Quel est l'auteur de l'embed?")
-        titre_embed = input("Quel est le titre de l'embed?")
-        description_embed = input("Quel est la description de l'embed?")
-        fieldname_embed = input("Quel est le nom du field?")
-        fieldvalue_embed = input("Quel est la valeur du field?")
-        footer_embed = input("Quel est le footer de l'embed? C'est la dernière étape.")
+        embed_type = input("Choisisez le type 1 (Simple) ou le type 2 (Avancé)")
+        if embed_type == ("2"):
 
-        embed=discord.Embed(title=titre_embed, description=description_embed, color=0x00ff00)
-        embed.set_author(name=auteur_embed)
-        embed.add_field(name=fieldname_embed, value=fieldvalue_embed, inline=False)
-        embed.set_footer(text=footer_embed)
-        await message.channel.send(embed=embed)
+            print("Veuillez mettre les informations de l'embed.")
+            auteur_embed = input("Quel est l'auteur de l'embed?")
+            titre_embed = input("Quel est le titre de l'embed?")
+            description_embed = input("Quel est la description de l'embed?")
+            fieldname_embed = input("Quel est le nom du field?")
+            fieldvalue_embed = input("Quel est la valeur du field?")
+            footer_embed = input("Quel est le footer de l'embed? C'est la dernière étape.")
+            embed=discord.Embed(title=titre_embed, description=description_embed, color=0x00ff00)
+            embed.set_author(name=auteur_embed)
+            embed.add_field(name=fieldname_embed, value=fieldvalue_embed, inline=False)
+            embed.set_footer(text=footer_embed)
+            await message.channel.send(embed=embed)
+
+        elif embed_type == ("1"):
+            print("Veuillez mettre les informations de l'embed.")
+            auteur_embed = input("Quel est l'auteur de l'embed?")
+            titre_embed = input("Quel est le titre de l'embed?")
+            description_embed = input("Quel est la description de l'embed?")
+            embed=discord.Embed(title=titre_embed, description=description_embed, color=0x00ff00)
+            embed.set_author(name=auteur_embed)
+            await message.channel.send(embed=embed)
+
+        else:
+            print("Non valide.")
+            
         print("La commande nt!customembed a été complété.")
 
 ######################End of bot#############################
