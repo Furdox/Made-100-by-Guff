@@ -48,10 +48,31 @@ async def on_message(message):
         await message.channel.send(embed=embed)
         print("La commande nt!test2 a été évoqué.")
 
+#Commande (nt!customembed) delete la commande, envoit les prossesus de constructions d'embed et blabla
+@client.event
+async def on_message(message):
+
+    if message.content.startswith("nt!customembed"):
+        await message.delete()
+
+        await message.channel.send("Construction d'un embed dans la console...")
+
+        print("Veuillez mettre les informations de l'embed.")
+        auteur_embed = input("Quel est l'auteur de l'embed?")
+        titre_embed = input("Quel est le titre de l'embed?")
+        description_embed = input("Quel est la description de l'embed?")
+        fieldname_embed = input("Quel est le nom du field?")
+        fieldvalue_embed = input("Quel est la valeur du field?")
+        footer_embed = input("Quel est le footer de l'embed? C'est la dernière étape.")
+
+        embed=discord.Embed(title=titre_embed, description=description_embed, color=0x00ff00)
+        embed.set_author(name=auteur_embed)
+        embed.add_field(name=fieldname_embed, value=fieldvalue_embed, inline=False)
+        embed.set_footer(text=footer_embed)
+        await message.channel.send(embed=embed)
+        print("La commande nt!customembed a été complété.")
 
 ######################End of bot#############################
-
-
 
 #Running the bot with the token (A besoin d'être la dernière ligne)
 client.run("Real account Token, not a bot Token", bot=False)
